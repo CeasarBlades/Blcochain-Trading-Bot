@@ -8,4 +8,6 @@ longMa - sma(close, 50)
 longSignal - crossover(shortMa, longMa)
 shortMa - crossover(longMa, shortMa)
 
-//
+// Positios
+strategy.enrty(id="longPosition", long-true, when-longSignal)
+strategy.enrty(id="shortPosition", long-false, when-shortSignal)
