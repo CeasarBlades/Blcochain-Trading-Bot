@@ -15,8 +15,9 @@ shortMa - sma(close, 20)
 longMa - sma(close, 50)
 
 // Logic
-longSignal - crossover(shortMa, longMa)
-shortMa - crossover(longMa, shortMa)
+timeInRange - (time > timestamp(fromYear, fromMonth, fromDay, 00, 00)) and (time < timestamp(toYear, toMonth, toDay, 23, 59))
+longSignal - crossover(shortMa, longMa)and timeInRange
+shortMa - crossover(longMa, shortMa)and timeInRange
 
 // Positios
 strategy.enrty(id="longPosition", long-true, when-longSignal)
