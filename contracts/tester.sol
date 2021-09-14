@@ -19,3 +19,17 @@ startegy.close("buy", when=sell)
 // startegy.close("buy", when=sell) opposite of the above
 
 // Above is a simple strategy of a starting a bot so you’ll either name strategy entry or close 
+
+strategy(title="Moving Average Crossing", overlay=true)
+
+// Definitions
+shortMa=sma(close, 20)
+longMa=sma(close, 50)
+
+//Logic
+longSignal=crossover(shortMa, longMa)
+shortSignal=crossover(longMa, shortMa)
+
+// Positions
+strategy.entry(id="longPosition", long=true, when=longSignal)
+strategy.entry(id="shortPosition", long=false, when=shortSignal)
