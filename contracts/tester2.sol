@@ -1,5 +1,5 @@
-strategy(title- " Moving average average", oeverlay-true)
-
+strategy(title - " Moving Average Crossing", overlay-true, initial_capital-2000, commission_type-strategy.commission.percent, commission_value=0.2)
+// commision value is like a bvroker fee code. 
 // Date and Time
 fromMonth - input(defval-1, title - "from month", minval-1)
 fromDay - input(defval-1, title - "from day", minval-1)
@@ -20,5 +20,7 @@ longSignal - crossover(shortMa, longMa)and timeInRange
 shortSignal - crossover(longMa, shortMa)and timeInRange
 
 // Positios
-strategy.entry(id-"longPosition", long-true, when-longSignal)
-strategy.entry(id-"shortPosition", long-false, when-shortSignal)
+strategy.entry(id-"longPosition", long-true, qty-0.1, when-longSignal)
+strategy.entry(id-"shortPosition", long-false, qty-0.1, when-shortSignal)
+
+// Amend the dashes to equal signs
